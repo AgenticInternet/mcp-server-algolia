@@ -8,7 +8,6 @@ from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 import mcp.types as types
 from algoliasearch.search.client import SearchClient
-from algoliasearch.http.exceptions import AlgoliaException
 import os
 import time
 import json
@@ -108,16 +107,10 @@ async def save_object(
             }
         }
         
-    except AlgoliaException as e:
-        return {
-            "success": False,
-            "error": f"Algolia error: {str(e)}",
-            "performance": {"latency_ms": (time.time() - start_time) * 1000}
-        }
     except Exception as e:
         return {
             "success": False,
-            "error": f"Unexpected error: {str(e)}",
+            "error": f"Error: {str(e)}",
             "performance": {"latency_ms": (time.time() - start_time) * 1000}
         }
 
@@ -192,16 +185,10 @@ async def save_objects_batch(
             }
         }
         
-    except AlgoliaException as e:
-        return {
-            "success": False,
-            "error": f"Algolia error: {str(e)}",
-            "performance": {"latency_ms": (time.time() - start_time) * 1000}
-        }
     except Exception as e:
         return {
             "success": False,
-            "error": f"Unexpected error: {str(e)}",
+            "error": f"Error: {str(e)}",
             "performance": {"latency_ms": (time.time() - start_time) * 1000}
         }
 
@@ -287,17 +274,10 @@ async def search_index(
             }
         }
         
-    except AlgoliaException as e:
-        return {
-            "success": False,
-            "error": f"Algolia error: {str(e)}",
-            "query": query,
-            "performance": {"latency_ms": (time.time() - start_time) * 1000}
-        }
     except Exception as e:
         return {
             "success": False,
-            "error": f"Unexpected error: {str(e)}",
+            "error": f"Error: {str(e)}",
             "query": query,
             "performance": {"latency_ms": (time.time() - start_time) * 1000}
         }
@@ -391,16 +371,10 @@ async def index_from_search_results(
             }
         }
         
-    except AlgoliaException as e:
-        return {
-            "success": False,
-            "error": f"Algolia error: {str(e)}",
-            "performance": {"latency_ms": (time.time() - start_time) * 1000}
-        }
     except Exception as e:
         return {
             "success": False,
-            "error": f"Unexpected error: {str(e)}",
+            "error": f"Error: {str(e)}",
             "performance": {"latency_ms": (time.time() - start_time) * 1000}
         }
 
