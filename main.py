@@ -20,7 +20,7 @@ load_dotenv()
 # Initialize MCP server
 mcp = FastMCP(
     "Algolia Vector Search Server",
-    port=3002,
+    port=3000,
     stateless_http=True,
     debug=True,
 )
@@ -460,7 +460,7 @@ if __name__ == "__main__":
     else:
         print("✅ Algolia credentials found")
     
-    print("🔍 Starting Robust Algolia MCP Server on port 3002...")
+    print("🔍 Starting Robust Algolia MCP Server on port 3000...")
     print("Tools: save_object, save_objects_batch, search_index, index_from_search_results")
     print("Resources: algolia://test/{index}, algolia://search/{index}/{query}")
     print("Prompts: algolia_workflow_prompt")
